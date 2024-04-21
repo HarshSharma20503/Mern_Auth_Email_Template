@@ -36,6 +36,13 @@ mv "$CLONE_DIR" "$NEW_PROJECT_NAME"
 
 cd "$NEW_PROJECT_NAME"
 
+echo "Deleting the script file..."
+rm mern_template.sh
+
+# Remove the .git directory
+echo "Deleting the .git directory..."
+rm -rf .git
+
 if ! command -v npm &> /dev/null
 then
     echo "npm is not installed. Please install npm and try again."
