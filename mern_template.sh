@@ -3,6 +3,13 @@
 # Variables for the script
 REPO_URL="https://github.com/HarshSharma20503/mern_template/"
 CLONE_DIR="mern_template"
+NEW_PROJECT_NAME="$1"
+
+# Check if project name is provided
+if [ -z "$NEW_PROJECT_NAME" ]; then
+    echo "Please provide a name for the new project. e.g. ./mern_template test"
+    exit 1
+fi
 
 # Check if git is installed
 if ! command -v git &> /dev/null
@@ -23,7 +30,11 @@ fi
 
 echo "Repository cloned successfully."
 
-cd "$CLONE_DIR"
+# Rename the project directory
+echo "Renaming the project directory to $NEW_PROJECT_NAME..."
+mv "$CLONE_DIR" "$NEW_PROJECT_NAME"
+
+cd "$NEW_PROJECT_NAME"
 
 if ! command -v npm &> /dev/null
 then

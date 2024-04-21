@@ -35,4 +35,4 @@ This is a project with a linux shell script which if you run will download a tem
 5. Create a mongodb atlas project and get the URI and than append the database name too for example `mongodb+srv://harshsh0503:harshsharm3@cluster0.9vsdfans.mongodb.net/Red_Alert`
 6. Write your email and also than go to that google account settings and search for app password, create one and than paste it in the .env
 7. Simply run the project by npm install in both frontend and backend.
-
+8. Change the title of the project inside the frontend from navbar and index.html.
