@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Variables for the script
-REPO_URL="https://github.com/HarshSharma20503/mern_template/"
+REPO_URL="https://github.com/HarshSharma20503/Mern_Auth_Email_Template/"
 CLONE_DIR="mern_template"
 NEW_PROJECT_NAME="$1"
 
