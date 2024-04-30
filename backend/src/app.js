@@ -4,9 +4,18 @@ import cookieParser from "cookie-parser";
 
 const app = express();
 
+// inside .env write multiple origins with comma in between
+const origins = process.env.CORS_ORIGIN.split(",");
+
 app.use(
   cors({
-    origin: process.env.CORS_ORIGIN,
+    origin: (origin, callback) => {
+      if (!origin || origins.includes(origin)) {
+        callback(null, true); // allow the request
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );
