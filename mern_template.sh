@@ -2,7 +2,7 @@
 
 # Variables for the script
 REPO_URL="https://github.com/HarshSharma20503/Mern_Auth_Email_Template/"
-CLONE_DIR="mern_template"
+CLONE_DIR="Mern_Auth_Email_Template"
 NEW_PROJECT_NAME="$1"
 
 # Check if project name is provided
