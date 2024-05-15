@@ -4,7 +4,7 @@ import axios from "axios";
 const handleApiError = (error) => {
   if (error.response.data.message) {
     if (error.response.data.message === "Unauthorized Access") {
-      localStorage.removeItem("user");
+      localStorage.removeItem("userInfo");
       toast.error("Please Login Again");
       setTimeout(() => {
         window.location.href = "/login";
@@ -17,40 +17,42 @@ const handleApiError = (error) => {
   }
 };
 
-const GetApiCall = async (url) => {
+export const GetApiCall = async (url) => {
   try {
     const { data } = await axios.get(url);
     return data;
   } catch (error) {
     handleApiError(error);
+    return { success: false };
   }
 };
 
-const PostApiCall = async (url, formData) => {
+export const PostApiCall = async (url, formData) => {
   try {
     const { data } = await axios.post(url, formData);
     return data;
   } catch (error) {
     handleApiError(error);
+    return { success: false };
   }
 };
 
-const PutApiCall = async (url, formData) => {
+export const PutApiCall = async (url, formData) => {
   try {
     const { data } = await axios.put(url, formData);
     return data;
   } catch (err) {
     handleApiError(err);
+    return { success: false };
   }
 };
 
-const DeleteApiCall = async (url) => {
+export const DeleteApiCall = async (url) => {
   try {
     const { data } = await axios.delete(url);
     return data;
   } catch (err) {
     handleApiError(err);
+    return { success: false };
   }
 };
-
-export { GetApiCall, PostApiCall, PutApiCall, DeleteApiCall };

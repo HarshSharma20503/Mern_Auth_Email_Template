@@ -3,6 +3,8 @@
   --secondary-color: #171c28; /* Dark navy */
   --background-color: #f0f2f5; /* Light grey */
   --text-color: #000000; /* Black */
+  --navbar-bg-color: #0dcaf0; /* Light blue */
+  --navbar-text-color: black; /* White */
   --scrollbar-track-color: #b2bec3; /* Light grey */
   --scrollbar-thumb-color: #74b9ff; /* Light blue */
   --gradient-color-start: rgba(0, 0, 0, 0.5); /* Semi-transparent black */

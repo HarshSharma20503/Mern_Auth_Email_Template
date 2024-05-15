@@ -1,0 +1,6 @@
+.navbar,
+.navbar-nav,
+.offcanvas-header {
+  background-color: var(--navbar-bg-color) !important;
+  color: var(--navbar-text-color);
+}

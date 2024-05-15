@@ -1,12 +1,13 @@
 import { useState } from "react";
-import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
+import { PostApiCall } from "../../utils/Axios";
 
 const SignUp = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -18,19 +19,37 @@ const SignUp = () => {
     setFormData({ ...formData, [name]: value });
   };
 
+  const validateForm = () => {
+    if (!formData.name) {
+      toast.error("Name is required");
+      return false;
+    }
+    if (!formData.email) {
+      toast.error("Email is required");
+      return false;
+    }
+    if (!formData.password) {
+      toast.error("Password is required");
+      return false;
+    }
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(formData.email)) {
+      toast.error("Invalid Email");
+      return false;
+    }
+    return true;
+  };
+
   const handleSubmit = async (event) => {
-    setLoading(true);
     event.preventDefault();
-    try {
-      const { data } = await axios.post("/api/auth/signUp", formData);
-      // console.log(data);
+    if (!validateForm()) return;
+
+    setLoading(true);
+    const data = await PostApiCall("/api/auth/signUp", formData);
+    if (data.success) {
       toast.success("Verify Your Email and than proceed to login");
+      setLoading(false);
       navigate("/login");
-    } catch (err) {
-      // console.log(err);
-      if (err.response.data.message) {
-        toast.error(err.response.data.message);
-      }
     }
     setLoading(false);
   };
@@ -74,13 +93,14 @@ const SignUp = () => {
             />
           </div>
           <div className="d-grid">
-            {loading && (
-              <div className="w-100 text-center py-3">
-                <Spinner className="" animation="border" variant="primary" />
-              </div>
-            )}
-            <button type="submit" className="btn btn-primary" onClick={handleSubmit}>
-              Submit
+            <button type="submit" className="btn btn-primary" disabled={loading} onClick={handleSubmit}>
+              {loading ? (
+                <div className="w-100 text-center">
+                  <Spinner className="" animation="border" variant="light" />
+                </div>
+              ) : (
+                "Sign Up"
+              )}
             </button>
           </div>
         </form>

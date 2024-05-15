@@ -4,12 +4,12 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
-import Home from "./Pages/Home/Home";
-import Login from "./Pages/Auth/Login";
-import SignUp from "./Pages/Auth/SignUp";
-import PrivateRoutes from "./Util/PrivateRoutes";
-import Navbar from "./Components/Navbar/Navbar";
-import ScrollToTop from "./Components/ScrollToTop/ScrollToTop";
+import Home from "./pages/Home/Home";
+import Login from "./pages/Auth/Login";
+import SignUp from "./pages/Auth/SignUp";
+import PrivateRoutes from "./utils/PrivateRoutes";
+import Navbar from "./components/Navbar/Navbar";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 
 const App = () => {
   return (

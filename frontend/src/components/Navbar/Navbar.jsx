@@ -5,37 +5,30 @@ import { Link } from "react-router-dom";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import { toast } from "react-toastify";
+import { GetApiCall } from "../../utils/Axios";
+
+import "./Navbar.css";
 
 const Header = () => {
   const navigate = useNavigate();
 
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("userInfo")));
 
   const handleLogout = async () => {
-    localStorage.removeItem("user");
-
-    try {
-      const response = await axios.get("/api/auth/logout");
-      console.log(response);
-    } catch (err) {
-      console.log(err);
-      if (err?.response?.data?.message) {
-        toast.error(err.response.data.message);
-      }
+    localStorage.removeItem("userInfo");
+    const data = GetApiCall("/api/auth/logout");
+    if (data.success) {
+      navigate("/login");
     }
-
-    navigate("/login");
   };
 
   useEffect(() => {
-    setUser(JSON.parse(localStorage.getItem("user")));
-  }, [localStorage.getItem("user")]);
+    setUser(JSON.parse(localStorage.getItem("userInfo")));
+  }, [localStorage.getItem("userInfo")]);
 
   return (
     <>
-      <Navbar key="md" expand="md" className="bg-body-danger" bg="info">
+      <Navbar key="md" expand="md" className="bg-body-danger">
         <Container fluid>
           <Navbar.Brand href="/">Project Name</Navbar.Brand>
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-md`} />
