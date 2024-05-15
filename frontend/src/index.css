@@ -1,16 +1,59 @@
+:root {
+  --primary-color: #74b9ff; /* Light blue */
+  --secondary-color: #171c28; /* Dark navy */
+  --background-color: #f0f2f5; /* Light grey */
+  --text-color: #000000; /* Black */
+  --scrollbar-track-color: #b2bec3; /* Light grey */
+  --scrollbar-thumb-color: #74b9ff; /* Light blue */
+  --gradient-color-start: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  --gradient-color-end: rgba(0, 0, 0, 0.9); /* Darker semi-transparent black */
+}
+
+/* Reset styles for all elements */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Set the font family and background color for the entire page */
 body,
 html,
 #root {
   font-family: "Roboto", sans-serif;
-  background-color: #f0f2f5;
+  background-color: var(--background-color);
   height: 100%;
   width: 100%;
+
+  /* Create a background gradient using radial and linear gradients */
   background: radial-gradient(circle, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 70%, rgba(0, 0, 0, 0.9) 100%),
-    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9));
+    linear-gradient(var(--gradient-color-start), var(--gradient-color-end));
+}
+
+/* Set smooth scrolling behavior for the page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Styles for the scrollbar */
+::-webkit-scrollbar-track {
+  border: 5px solid var(--secondary-color);
+  background-color: var(--scrollbar-track-color);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: var(--scrollbar-track-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb-color);
+  border-radius: 10px;
+}
+
+/* Hide the horizontal scrollbar */
+::-webkit-scrollbar:horizontal {
+  height: 0;
+  width: 0;
+  display: none;
 }
