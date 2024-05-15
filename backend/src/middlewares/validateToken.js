@@ -1,6 +1,6 @@
 import { User } from "../models/user.model.js";
 import { ApiError } from "../utils/ApiError.js";
-import { asyncHandler } from "../utils/AsyncHandler.js";
+import { AsyncHandler } from "../utils/AsyncHandler.js";
 import jwt from "jsonwebtoken";
 
 /**
@@ -8,7 +8,7 @@ import jwt from "jsonwebtoken";
  * @desc    Middleware to validate JWT token and attach user to the request
  * @access  Private (used for routes requiring authentication)
  */
-export const validateToken = asyncHandler(async (req, res, next) => {
+export const validateToken = AsyncHandler(async (req, res, next) => {
   try {
     // Retrieve token from cookies or authorization header
     const token = req.cookies?.accessToken || req.header("Authorization")?.replace("Bearer ", "");
