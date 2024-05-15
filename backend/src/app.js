@@ -1,36 +1,50 @@
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import dotenv from "dotenv";
+
+// Load environment variables from .env file
+dotenv.config();
 
 const app = express();
 
-// inside .env write multiple origins with comma in between
+// Split CORS origins from environment variable
 const origins = process.env.CORS_ORIGIN.split(",");
 
+// Set up CORS middleware
 app.use(
   cors({
     origin: (origin, callback) => {
+      // Check if the request origin is allowed
       if (!origin || origins.includes(origin)) {
-        callback(null, true); // allow the request
+        callback(null, true); // Allow the request
       } else {
         callback(new Error("Not allowed by CORS"));
       }
     },
-    credentials: true,
+    credentials: true, // Allow sending cookies across domains
   })
 );
 
-app.use(express.json({ limit: "16kb" })); // to parse json in body
-app.use(express.urlencoded({ extended: true, limit: "16kb" })); // to parse url
-app.use(express.static("public")); // to use static public folder
-app.use(cookieParser()); // to enable CRUD operation on browser cookies
+// Middleware to parse JSON in request body
+app.use(express.json({ limit: "16kb" }));
 
-// auth routes
+// Middleware to parse URL-encoded data in request body
+app.use(express.urlencoded({ extended: true, limit: "16kb" }));
+
+// Middleware to serve static files from the public folder
+app.use(express.static("public"));
+
+// Middleware to enable CRUD operations on browser cookies
+app.use(cookieParser());
+
+// Import and use auth routes
 import authRouter from "./routes/auth.routes.js";
 app.use("/api/auth", authRouter);
 
-// user routes
+// Import and use user routes
 import userRouter from "./routes/user.routes.js";
 app.use("/api/user", userRouter);
 
+// Export the configured Express app
 export { app };

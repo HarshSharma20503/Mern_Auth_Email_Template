@@ -40,5 +40,3 @@ export const sendConfirmationMail = async (to, id) => {
     return false; // Return false if there was an error sending the email
   }
 };
-
-export { sendConfirmationMail };

@@ -23,14 +23,14 @@ export const registerUser = AsyncHandler(async (req, res) => {
 
   // Check if user already exists
   const existingUser = await User.findOne({ email });
-  console.log("Existing User", existingUser);
+  // console.log("Existing User", existingUser);
   if (existingUser) {
     throw new ApiError(400, "User already exists");
   }
 
   // Check if there is an unverified user with the same email
   const existingUnverifiedUser = await UnverifiedUser.findOne({ email });
-  console.log("Existing Unverified User", existingUnverifiedUser);
+  // console.log("Existing Unverified User", existingUnverifiedUser);
   if (existingUnverifiedUser) {
     throw new ApiError(400, "Already registered. Please verify your email, check your mail to do so.");
   }
@@ -127,7 +127,7 @@ export const loginUser = AsyncHandler(async (req, res) => {
   // Check if the password matches
   const checkPassword = await user.matchPassword(password);
   if (checkPassword) {
-    console.log("Inside match password");
+    // console.log("Inside match password");
     res.cookie("accessToken", jwtToken, {
       httpOnly: true,
       expires: expiryDate,

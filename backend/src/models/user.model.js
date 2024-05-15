@@ -28,14 +28,6 @@ const userSchema = new Schema(
  * @return {Promise<Boolean>} - True if passwords match, false otherwise
  */
 userSchema.methods.matchPassword = async function (enteredPassword) {
-  console.log("Entered Password:", enteredPassword);
-
-  // Hash the entered password for comparison (this line seems unnecessary and is removed in the refined version)
-  // const temp = await bcrypt.hash(enteredPassword, 12);
-  // console.log("Temp: ", temp);
-
-  console.log("Password: ", this.password);
-
   // Compare entered password with the stored hashed password
   return await bcrypt.compare(enteredPassword, this.password);
 };
