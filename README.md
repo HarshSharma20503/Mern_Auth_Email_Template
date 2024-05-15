@@ -30,7 +30,7 @@ This is a project with a linux shell script which if you run will download a tem
 -   prettier (Dev Dependencies)
 
 ## Steps to follow
-
+1. Download the ./mern_template script and then give it execution permission by `sudo chmod +x mern_template.sh`
 1. Run the script named mern_template by following command `./mern_template.sh project_name`
 2. This will clone and install all the dependenices of the project and open vs code.
 3. Uncomment the .env from the .gitignore
