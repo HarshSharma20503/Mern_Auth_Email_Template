@@ -37,9 +37,10 @@ This is a project with a linux shell script which if you run will download a tem
 4. Now fill the .env of the backend with `EMAIL_ID` and `APP_PASSWORD` that will be used to sent mail of confirmation after signup.
 5. Use the email which has 2 step verification on.
 6. Go to the account settings of that chosen mail and search for app password, create or generate a app password and paste it here.
-7. Create a mongodb atlas project with proper ip access (use open for all access for development) and get the URI and than append the database name too. e.g. `mongodb+srv://harshsh0503:harshsharm3@cluster0.9vsdfans.mongodb.net/Red_Alert`
-8. Simply run the project by npm run dev in both frontend and backend.
-9. Change the title of the project inside the frontend from navbar and index.html.
+7. Create a mongodb atlas project with proper ip access (use open for all access for development) and get the URI and than append the database name too. e.g.
+   `mongodb+srv://<Your Username>:<Your Password>@cluster0.<Project Id>.mongodb.net/<Database Name>` like `mongodb+srv://harshsh0503:harshsharm3@cluster0.9vsdfans.mongodb.net/Red_Alert`
+9. Simply run the project by npm run dev in both frontend and backend.
+10. Change the title of the project inside the frontend from navbar and index.html.
 
 ## Contributions
 
