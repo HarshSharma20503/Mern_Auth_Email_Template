@@ -43,6 +43,9 @@ rm mern_template.sh
 echo "Deleting the .git directory..."
 rm -rf .git
 
+echo "Deleting the README.md file..."
+rm README.md
+
 if ! command -v npm &> /dev/null
 then
     echo "npm is not installed. Please install npm and try again."
