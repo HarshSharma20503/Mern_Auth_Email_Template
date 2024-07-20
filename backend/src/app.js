@@ -2,11 +2,14 @@ import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
+import path from "path";
 
 // Load environment variables from .env file
 dotenv.config();
 
 const app = express();
+
+const __dirname = path.resolve();
 
 // Split CORS origins from environment variable
 const origins = process.env.CORS_ORIGIN.split(",");
